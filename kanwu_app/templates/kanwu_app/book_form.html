@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}添加书籍&nbsp;-&nbsp;{% endblock %}
+
+{% block content %}
+<form method="post" action="{% url 'book_create' %}" >
+	{% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Submit" />
+</form>
+
+{% endblock %}
