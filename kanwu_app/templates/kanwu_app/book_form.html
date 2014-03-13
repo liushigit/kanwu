@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
-
+{% load add_class %}
 {% block title %}添加书籍&nbsp;-&nbsp;{% endblock %}
 
 {% block content %}
-<form method="post" action="{% url 'book_create' %}" >
+<form class="form" method="post" action="{% url 'book_create' %}" >
 	{% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Submit" />
+    {% for field in form %}
+	     <div class="form-group">
+		     {{ field.label_tag }}
+			 {{field | add_class:"form-control" }}
+		 </div>
+	{% endfor %}
+    <input class="pull-right btn btn-primary" type="submit" value="Submit" />
 </form>
-
 {% endblock %}

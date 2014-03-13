@@ -2,7 +2,24 @@
 <html>
     <head>
         <title>{% block title %}{% endblock %}勘误网</title>
+		<link href="/static/lib/css/bootstrap.min.css" rel="stylesheet">
     <body>
-        {% block content %}
-        {% endblock %}
-	
+	    <div class="container">
+		    <div class="">&nbsp;</div>
+			<div class="row">
+				<ul class="nav nav-pills">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="#">Profile</a></li>
+					<li><a href="#">Messages</a></li>
+				</ul>
+			</div>
+			<div class="">&nbsp;</div>
+			<div class="row">
+				{% block content %}
+				{% endblock %}
+			<div>
+		</div>
+		<script src="/static/lib/js/jquery.min.js"></script>
+	    <script src="/static/lib/js/bootstrap.min.js"></script>
+		
+		
