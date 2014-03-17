@@ -19,10 +19,6 @@ class Category(models.Model):
     def __unicode__(self):
         return self.name
 
-class ErrorReport(models.Model):
-    page_number = models.IntegerField()
-    description = models.CharField(max_length=300)
-
 class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.ManyToManyField(Author)
@@ -32,3 +28,10 @@ class Book(models.Model):
     
     def __unicode__(self):
         return self.title
+
+class ErrorReport(models.Model):
+    page_number = models.IntegerField()
+    description = models.TextField(max_length=1000)
+    book = models.ForeignKey(Book)
+    
+    
