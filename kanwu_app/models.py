@@ -1,15 +1,25 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 
 class Author(models.Model):
-    name = models.CharField(max_length=50)
+    # should the name be unique? 
+    name = models.CharField(max_length=50, unique=True)
+    def __unicode__(self):
+        return self.name
 
 class Press(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
+    
+    def __unicode__(self):
+        return self.name
 	
 class Category(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
+    
+    def __unicode__(self):
+        return self.name
 
-class Error(models.Model):
+class ErrorReport(models.Model):
     page_number = models.IntegerField()
     description = models.CharField(max_length=300)
 
@@ -17,5 +27,8 @@ class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.ManyToManyField(Author)
     publisher = models.ForeignKey(Press)
-    isbn = models.CharField(max_length=20)
+    isbn = models.CharField(max_length=20, unique=True)
     category = models.ForeignKey(Category)
+    
+    def __unicode__(self):
+        return self.title
